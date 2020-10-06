@@ -1,0 +1,20 @@
+
+GitHub配置SSH key步骤（这一步是为了上传代码的安全性）:
+1: mkdir .ssh ———创建ssh证书
+2: cd .ssh ————进入到ssh证书目录
+3: ssh-keygen -t rsa -C “example@.com” ———生成私钥,公钥，“”内填写你注册GitHub的邮箱
+
+生成完以后
+
+cd ~/.ssh 
+
+cat id_rsa.pub
+打开Github settings  输入秘钥
+
+
+git init
+git add anything
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:LChromium/L.git
+git push -u origin main
