@@ -1,20 +1,54 @@
 
-GitHub配置SSH key步骤（这一步是为了上传代码的安全性）:
-1: mkdir .ssh ———创建ssh证书
-2: cd .ssh ————进入到ssh证书目录
-3: ssh-keygen -t rsa -C “example@.com” ———生成私钥,公钥，“”内填写你注册GitHub的邮箱
-
-生成完以后
-
-cd ~/.ssh 
-
-cat id_rsa.pub
-打开Github settings  输入秘钥
 
 
+GitHub说明命令行：
 git init
-git add anything
+git add README.md
 git commit -m "first commit"
 git branch -M main
 git remote add origin git@github.com:LChromium/L.git
 git push -u origin main
+
+
+
+
+换源
+sudo cp /etc/capt/sources.list /etc/apt/sources.list.bak  //备份本地源
+ sudo gedit /etc/apt/sources.list //查看源并可修改
+ 将源的网址覆盖在sources文件中 并在对应网址下载文件(仿佛可不用)
+ # 默认注释了源码镜像以提高 apt update 速度
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+ sudo apt-get update //更换对应源
+ 
+ 
+ 
+git
+sudo apt install git //安装本地的git库
+
+SSH免密方式 
+1: mkdir .ssh ———创建ssh证书
+2: cd .ssh ————进入到ssh证书目录
+3: ssh-keygen -t rsa -C “example@.com”//ssh-keygen ———生成私钥,公钥，“”内填写你注册GitHub的邮箱
+或git config --global user.name ""
+  git config --global user.emal ""来设置名字与邮箱地址
+cd ~/.ssh 
+cat id_rsa.pub
+打开Github settings  输入秘钥
+
+传输文件
+touch README.md //也许这个文件是不可缺少的
+git init //初始化git
+git add  //仓库分为工作区 暂存区 提交区，文件夹即是工作区，现在我们新建一个空文件并使用git add <文件名>把它添加到暂存区。
+git commit -m "first commit"//我们使用git commit -m "注释"把它提交到仓库
+git branch -M main//强制重命名分支
+git remote add origin git@github.com:LChromium/L.git//建立远程链接
+git push -u origin main//上传文件
+
+
+
+
+
+
+
+
